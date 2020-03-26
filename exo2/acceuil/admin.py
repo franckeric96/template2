@@ -3,10 +3,10 @@ from . import models
 
 from django.utils.safestring import mark_safe
 
-
+from actions import Actions 
 
 # Register your models here.
-class AcceuilAdmin(admin.ModelAdmin):
+class AcceuilAdmin(Actions):
     fieldsets = [
         ('Presentation',{'fields': ['image','titre']}),
         ('Video', {'fields': ['video']}),
@@ -27,7 +27,7 @@ class AcceuilAdmin(admin.ModelAdmin):
 
                                                                                                                                   
     
-class ArtisteAdmin(admin.ModelAdmin):
+class ArtisteAdmin(Actions):
     
     fieldsets = [
         ('Presentation',{'fields': ['nom','prenom','bio']}),
@@ -50,7 +50,7 @@ class ArtisteAdmin(admin.ModelAdmin):
         return mark_safe("<img src='{url}' width= 100px height=50px >".format(url=obj.image.url))
 
     
-class GalerieAdmin(admin.ModelAdmin):
+class GalerieAdmin(Actions):
     fieldsets = [
         ('Presentation',{'fields': ['image','titre']}),
         ('status', {'fields': ['status']})
@@ -69,7 +69,7 @@ class GalerieAdmin(admin.ModelAdmin):
         return mark_safe("<img src='{url}' width= 100px height=50px >".format(url=obj.image.url))
 
     
-class PlaylistAdmin(admin.ModelAdmin):
+class PlaylistAdmin(Actions):
     fieldsets = [
         ('Presentation',{'fields': ['nom_artiste','video']}),
         ('Status',{'fields': ['status']})
